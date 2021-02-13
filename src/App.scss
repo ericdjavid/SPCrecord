@@ -1,0 +1,440 @@
+
+
+$n:3;
+$d:1s;
+
+
+#bgr{
+  position:absolute;
+  margin:auto;
+  top:0;
+  bottom:0;
+
+  width:100%;
+  height:100%;
+
+}
+// Raft
+#raftHolder{
+  position:absolute;
+  margin:auto;
+
+  bottom:4;
+  left:0;
+  right:0;
+  //background:#f00;
+  width:100px;
+  height:50px;
+  overflow:hidden;
+}
+#raft{
+  position:absolute;
+  margin:auto;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  transform:rotate(-5deg);
+  animation-name:raftFloat;
+  animation-duration:1s;
+  animation-iteration-count:infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+#raftBottom{
+  position:absolute;
+  margin:auto;
+  top:34px;
+  bottom:0;
+  left:0;
+  right:0;
+  width:0px;
+  height:0px;
+  border-bottom: 20px solid #555;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+
+  &::before{
+    content:"";
+    position:absolute;
+    margin:auto;
+    width:0px;
+    height:0px;
+    left:-40px;
+    border-top: 20px solid #2A2A2A;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+  }
+  &::after{
+    content:"";
+    position:absolute;
+    margin:auto;
+    width:0px;
+    height:0px;
+    border-top: 20px solid #888;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+  }
+}
+
+#raftTop{
+  position:absolute;
+  margin:auto;
+  top:-7px;
+  left:20px;
+  right:0;
+  bottom:0;
+  width:0px;
+  height:0px;
+  border-bottom: 20px solid #fff;
+  border-right: 20px solid transparent;
+  &::before{
+    content:"";
+    position:absolute;
+    margin:auto;
+    width:0px;
+    height:0px;
+    left:-20px;
+    border-bottom: 20px solid #333;
+    border-left: 20px solid transparent;
+  }
+}
+
+#raftRipples{
+  position:absolute;
+  margin:auto;
+  top:50px;
+  bottom:0;
+  left:0;
+  right:100px;
+  width:200px;
+  height:50px;
+  //border :1px solid #f00;
+}
+.raftRipple{
+  position:absolute;
+  margin:auto;
+  width:0px;
+  height:4px;
+  border-radius:2px;
+  opacity:.1;
+  background:#fff;
+  animation-name:raftRippleMove;
+  animation-duration:1.5s;
+  animation-iteration-count:infinite;
+  animation-timing-function: ease-in-out;
+
+  &:nth-child(1) {
+    top:30px;
+    left:120px;
+    animation-delay:1s;
+  }
+  &:nth-child(2) {
+    top:24px;
+    left:120px;
+    animation-delay:1.5s;
+  }
+}
+
+#raftReflection{
+  position:absolute;
+  margin:auto;
+  top:90px;
+  bottom:0;
+  right:0;
+  left:10px;
+  width:100px;
+  height:50px;
+  //border:1px solid #f00;
+}
+
+.raftReflectionSegment{
+  position:absolute;
+  margin:auto;
+  height:4px;
+  border-radius:2px;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#fff;
+  animation-name:raftReflectionMove;
+  animation-duration:1s;
+  animation-iteration-count:infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+
+  &:nth-child(1) {
+    top:-30px;
+    width:35px;
+    opacity:.1;
+  }
+  &:nth-child(2) {
+    top:-16px;
+    width:45px;
+    animation-delay:.2s;
+    opacity:.05;
+  }
+  &:nth-child(3) {
+    top:-2px;
+    width:60px;
+    animation-delay:.4s;
+    opacity:.02;
+  }
+}
+
+@keyframes raftReflectionMove{
+  0%{
+    transform:scale(1.2,1) translate(5px);
+  }
+
+  100%{
+    transform:scale(1,1) translate(-10px);
+  }
+}
+
+@keyframes raftRippleMove{
+  0%{
+    width:0px;
+  }
+  70%{
+    width:50px;
+  }
+  100%{
+    transform:translate(-100px);
+    width:0px;
+    opacity:0;
+  }
+}
+
+@keyframes raftFloat{
+  0%{
+    transform:rotate(3deg) translate(10px,-2px);
+  }
+  100%{
+    transform:rotate(-3deg) translate(-5px);
+  }
+}
+
+#sploutch{
+  position:absolute;
+  width:300px;
+  height:300px;
+  animation-name: panSploutch;
+  animation-duration:6s;
+}
+
+@keyframes panSploutch{
+  to {
+    transform: translateX(-300px);
+  }
+}
+
+
+// DROPS
+
+.drop{
+  position:absolute;
+  background:#fff;
+  width: 2px;
+  height: 40px;
+  opacity:0;
+  left:150px;
+  animation-name: fall;
+  animation-duration:.2s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fall{
+  0%{
+    top:-100px;
+    opacity:0;
+    height:100px
+  }
+  99%{
+    opacity:1;
+  }
+  100% {
+    top:150px;
+    opacity:0s;
+    height:5px;
+  }
+}
+
+// RIPPLES
+
+#ripples{
+  position:absolute;
+  width:300px;
+  height:300px;
+  transform: rotateX(75deg);
+}
+
+
+.ripple {
+  position:absolute;
+  margin:auto;
+  //background : #000;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  height:1px;
+  opacity:0;
+  border-radius:50%;
+  border-style:solid;
+  border-width:6px;
+  border-color: rgba(255,255,255,.2);
+  animation-name: grow;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+
+  @for $i from 0 to $n {
+    $delay:($i)*.3*$d;
+    &:nth-child(#{$i+1}) {
+      animation-delay: $delay;
+      animation-duration: 2s;
+    }
+  }
+}
+
+@keyframes grow {
+  0% {
+    width: 1px;
+    height:1px;
+    opacity: 0;
+    transform : translateY(20px);
+  }
+  25%{
+    opacity:.5;
+    transform : translateY(-10px);
+  }
+  50%{
+    transform : translateY(10px);
+  }
+
+  100% {
+    width: 250px;
+    height:250px;
+    opacity:0;
+    transform : translateY(0px);
+  }
+}
+
+// SPLASHES
+
+.splash{
+  position:absolute;
+  margin:auto;
+  width: 4px;
+  height:4px;
+  border-radius:2px;
+  opacity:0;
+  background : #fff;
+
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-duration:1s;
+  @for $i from 1 to $n+1 {
+    &:nth-child(#{$i}) {
+      animation-name: bounce+$i;
+      animation-delay:$i*.1s;
+    }
+  }
+}
+
+@for $i from 1 to $n+1 {
+  @keyframes #{bounce+$i} {
+    0%{
+      left:150px;
+      top:150px;
+      opacity:0;
+    }
+    5%{
+      opacity:.5;
+    }
+    50%{
+      top:100+random(40)+px;
+    }
+    100%{
+      left:120 + random(80) + px;
+      top:150px;
+      opacity:0;
+    }
+  }
+}
+
+#forest{
+  position:absolute;
+  margin:auto;
+  width:100%;
+  height:100%;
+  left:100vw;
+  animation-name:panForest;
+  animation-duration:12s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+}
+
+@keyframes panForest{
+  to{
+    transform:translateX(-300vw);
+  }
+}
+
+.tree{
+  position:absolute;
+  background:#000;
+  height:120%;
+  @for $i from 1 to $n+1 {
+    &:nth-child(#{$i}) {
+      $rot:-5 + random(10);
+      width: 50 + random(50) + px;
+      transform: rotateZ($rot+deg);
+      left:$i*(100 + random(150))+px;
+    }
+  }
+
+}
+
+//en of animation stuff =)
+
+
+.App {
+  background-color: #131516 !important;
+}
+
+.card-body {
+  background-color: #dee2e2;
+}
+
+.card {
+  margin-top: 2em;
+  margin-bottom : 30px;
+  margin-left : auto;
+  margin-right : auto;
+  background-color: transparent !important;
+}
+
+#lolcat {
+text-align: center;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* The following block can be included in a custom.scss */
+
+/* make the customizations */
+$theme-colors: (
+"info": tomato,
+"danger": teal
+);
+
+/* import bootstrap to set changes */
+@import "~bootstrap/scss/bootstrap";
