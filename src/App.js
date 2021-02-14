@@ -30,7 +30,7 @@ class App extends React.Component {
   render() {
 
     const { error, SPC } = this.state;
-    const url = 'https://evening-reaches-94476.herokuapp.com';
+
 
     // Print errors if any
     if (error) {
@@ -47,7 +47,7 @@ class App extends React.Component {
                 <Card style={{}} key={SPC.id} style={{ width: '27rem' }}>
 
 
-                  <Card.Img variant="top" src={`${url}${SPC.Image[0].url}`}/>
+                  <Card.Img variant="top" src={SPC.Image[0].url}/>
                   <Card.Body>
                     <Card.Title>{SPC.Name} - </Card.Title>
 
