@@ -43,8 +43,9 @@ class App extends React.Component {
        <h1 id="lolcat">Side project club records</h1>
       <container fluid>
          <CardDeck style={{ display: 'flex', flexDirection: 'row' }}>
+           <div className="row">
             {this.state.SPC.map(SPC => (
-                <Card style={{}} key={SPC.id} style={{ width: '27rem' }}>
+                <Card key={SPC.id} style={{ width: '30rem' }}>
 
 
                   <Card.Img variant="top" src={SPC.Image[0].url}/>
@@ -60,6 +61,7 @@ class App extends React.Component {
                 </Card>
             )
             )}
+           </div>
             </CardDeck>
       </container>
 
